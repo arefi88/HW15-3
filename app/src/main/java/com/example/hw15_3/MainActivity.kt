@@ -16,20 +16,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        imageAdapter= ImageAdapter(this)
-        ImageClient.getClient().getImages().enqueue(object : Callback<Images>{
-            override fun onResponse(call: Call<Images>, response: Response<Images>) {
-                imageAdapter.differ.submitList(response.body()?.toList())
-            }
-a
-            override fun onFailure(call: Call<Images>, t: Throwable) {
-                Log.e(TAG,"onCreate: ${t.message}")
-            }
 
-        })
-        binding.rvMain.apply {
-            layoutManager=LinearLayoutManager(this@MainActivity)
-            adapter=imageAdapter
-        }
     }
 }

@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
             override fun onResponse(call: Call<Images>, response: Response<Images>) {
                 imageAdapter.differ.submitList(response.body()?.toList())
             }
-a
+
             override fun onFailure(call: Call<Images>, t: Throwable) {
                 Log.e(TAG,"onCreate: ${t.message}")
             }

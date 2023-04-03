@@ -6,11 +6,17 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.example.hw15_3.databinding.ItemImageBinding
 
 class ImageAdapter(val context:Context) : RecyclerView.Adapter<ImageAdapter.ViewHolder>(){
     private lateinit var binding:ItemImageBinding
+    val placeHolder = CircularProgressDrawable(context).apply {
+        strokeWidth = 8f
+        centerRadius = 32f
+        start()
+    }
     inner class ViewHolder : RecyclerView.ViewHolder(binding.root){
         fun setData(item: ImageItem){
            Glide.with(context).apply {

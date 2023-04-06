@@ -19,12 +19,17 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         imageAdapter= ImageAdapter(this)
-        viewModel.imagesLiveData.observe(this){images->
-            imageAdapter.differ.submitList(images)
-        }
+//        viewModel.imagesLiveData.observe(this){images->
+//            imageAdapter.differ.submitList(images)
+//        }
         binding.rvMain.apply {
             layoutManager=LinearLayoutManager(this@MainActivity)
             adapter=imageAdapter
         }
+        viewModel.getImages()
+        viewModel.images.observe(this){
+            imageAdapter.differ.submitList(it)
+        }
+
     }
 }
